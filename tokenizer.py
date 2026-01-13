@@ -2,6 +2,7 @@ import quopri
 import re
 from html import unescape
 
+
 class EmailTokenizer:
     """
     Handles tokenization of raw email text by normalizing and cleaning input data.
