@@ -3,6 +3,8 @@
 """Tests for MyFilter class."""
 
 import unittest
+from pathlib import Path
+
 import tests.tst_filterbase
 
 
@@ -13,7 +15,8 @@ class MyFilterTest(tests.tst_filterbase.BaseFilterTestCase):
         # Set an instance of class MyFilter for the test
         from filter import MyFilter
         self.filter = MyFilter()
-        self.filter.MODEL_PATH = "./model/test_pretrained_model.pkl"
+        base_dir = Path(__file__).resolve().parent
+        self.filter.MODEL_PATH = base_dir / "model" / "test_pretrained_model.pkl"
 
        
 if __name__ == '__main__':
