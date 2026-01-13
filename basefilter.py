@@ -23,6 +23,7 @@ class BaseFilter(ABC):
         """
         pass
 
+    @abstractmethod
     def test(self, emails_path):
         """
         Prepare the corpus and prediction path for testing.
