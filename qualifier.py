@@ -13,15 +13,13 @@ def get_class_name(obj):
     return type(obj).__name__
 
 
-def compute_quality_for_filter(train_dir, test_dir, filter_instance):
+def compute_quality_for_filter(test_dir, filter_instance):
     """
-    Train and test a filter, then compute its quality score.
-    :param train_dir: Path to the training emails directory.
+    Test a filter, then compute its quality score.
     :param test_dir: Path to the testing emails directory.
     :param filter_instance: Instance of a filter (subclass of BaseFilter).
     :return: Quality score computed for the test directory.
     """
-    filter_instance.train(train_dir)
     filter_instance.test(test_dir)
 
     quality_score = compute_quality_for_corpus(test_dir)
@@ -30,6 +28,19 @@ def compute_quality_for_filter(train_dir, test_dir, filter_instance):
     os.remove(jpath(test_dir, PREDICTION_FILENAME))
 
     return quality_score
+
+
+def compute_quality_for_filter_with_training(train_dir, test_dir, filter_instance):
+    """
+    Train and test a filter, then compute its quality score.
+    :param train_dir: Path to the training emails directory.
+    :param test_dir: Path to the testing emails directory.
+    :param filter_instance: Instance of a filter (subclass of BaseFilter).
+    :return: Quality score computed for the test directory.
+    """
+    filter_instance.train(train_dir)
+
+    return compute_quality_for_filter(test_dir, filter_instance)
 
 
 def compute_quality_for_filters(train_dir, test_dir, filters):
@@ -43,6 +54,6 @@ def compute_quality_for_filters(train_dir, test_dir, filters):
     quality_dict = dict()
     for fr in filters:
         filter_name = get_class_name(fr)
-        quality_dict[filter_name] = compute_quality_for_filter(train_dir, test_dir, fr)
+        quality_dict[filter_name] = compute_quality_for_filter_with_training(train_dir, test_dir, fr)
 
     return quality_dict
