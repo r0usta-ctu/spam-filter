@@ -4,7 +4,7 @@
 
 import unittest
 
-from quality import quality_score
+from metrics.quality import quality_score
 
 class QualityScoreTest(unittest.TestCase):
 

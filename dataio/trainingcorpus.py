@@ -1,7 +1,7 @@
-from corpus import Corpus
-from paths import jpath, TRUTH_FILENAME
+from dataio.corpus import Corpus
+from config.paths import jpath, TRUTH_FILENAME
 from utils import read_classification_from_file
-from quality import SPAM_TAG, HAM_TAG
+from config.labels import SPAM_TAG, HAM_TAG
 
 
 class TrainingCorpus(Corpus):

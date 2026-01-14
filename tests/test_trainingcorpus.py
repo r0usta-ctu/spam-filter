@@ -3,7 +3,7 @@
 """Tests for the TrainingCorpus class.
 
 TrainingCorpus assumes that the !truth.txt file exists 
-in the corpus directory and uses the contained information 
+in the corpus directory and uses the contained information
 to provide additional functionality.
 
 Author: Vojtěch Nejedlý,
@@ -12,7 +12,7 @@ Created: 02-01-2026
 
 import unittest
 
-from trainingcorpus import TrainingCorpus
+from dataio.trainingcorpus import TrainingCorpus
 
 import os
 import random
@@ -34,7 +34,7 @@ TRUTH_FILENAME = '!truth.txt'
 class TrainingCorpusTest(unittest.TestCase):
     
     def setUp(self):
-        """Prepare fake corpus with !truth.txt file."""
+        """Prepare fake dataio with !truth.txt file."""
         self.email_dict = create_corpus_dictionary()
         self.true_class = create_classification_for(self.email_dict.keys())
         create_corpus_dir_from_dictionary(self.email_dict)

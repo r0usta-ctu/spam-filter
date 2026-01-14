@@ -5,7 +5,7 @@ import unittest
 import shutil
 import random
 
-from basefilter import BaseFilter
+from filters.basefilter import BaseFilter
 from utils import read_classification_from_file
 from tests.test_readClassificationFromFile import (
     save_classification_to_file,
@@ -46,12 +46,12 @@ class BaseFilterTestCase(unittest.TestCase):
         self.filter = DummyFilter()
 
     def delete_testing_corpus(self):
-        """Remove the corpus created for testing purposes."""
+        """Remove the dataio created for testing purposes."""
         shutil.rmtree(CORPUS_DIR, ignore_errors=True)
     
     def create_corpus_without_truth(self):
         """Create fake directory with text files for testing purposes."""
-        # Create contents of the fake corpus and store them in a member 
+        # Create contents of the fake dataio and store them in a member
         # variable just for the case it is needed by the add_truth_to_corpus.
         self.file_dict = create_corpus_dictionary()
         create_corpus_dir_from_dictionary(self.file_dict, CORPUS_DIR)
@@ -73,7 +73,7 @@ class BaseFilterTestCase(unittest.TestCase):
         # Nothing to assert, if we got this far, declare success
         
     def add_truth_to_corpus(self):
-        """Add a truth file to the existing fake corpus."""
+        """Add a truth file to the existing fake dataio."""
         d = {key: random.choice([HAM_TAG, SPAM_TAG]) 
              for key in self.file_dict.keys()}
         self.truth_filepath = os.path.join(CORPUS_DIR, TRUTH_FILENAME)
@@ -109,7 +109,7 @@ class BaseFilterTestCase(unittest.TestCase):
             self.filter.train(CORPUS_DIR)
             # Before testing, delete the !truth.txt file
             os.unlink(self.truth_filepath)
-            # Test the filter on the same corpus
+            # Test the filter on the same dataio
             self.filter.test(CORPUS_DIR)
         # Verify
         self.assertPredictionFileExistsAndContainsClassificationFor(self.file_dict)

@@ -16,7 +16,7 @@ class MyFilterTest(tests.tst_filterbase.BaseFilterTestCase):
         from filter import MyFilter
         self.filter = MyFilter()
         base_dir = Path(__file__).resolve().parent
-        self.filter.MODEL_PATH = base_dir / "model" / "test_nb_spam_vocab2500.pkl"
+        self.filter.MODEL_PATH = base_dir / "models" / "test_nb_spam_vocab2500.pkl"
 
        
 if __name__ == '__main__':

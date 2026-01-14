@@ -1,8 +1,8 @@
 import random
 from abc import abstractmethod
 
-from basefilter import BaseFilter
-from quality import HAM_TAG, SPAM_TAG
+from filters.basefilter import BaseFilter
+from config.labels import HAM_TAG, SPAM_TAG
 from utils import write_classification_to_file
 
 

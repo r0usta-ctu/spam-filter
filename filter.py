@@ -2,11 +2,11 @@ import math
 import pickle
 from collections import Counter
 
-from basefilter import BaseFilter
-from emailextractor import EmailBodyExtractor
-from quality import HAM_TAG, SPAM_TAG
-from tokenizer import EmailTokenizer
-from trainingcorpus import TrainingCorpus
+from filters.basefilter import BaseFilter
+from text.extractor import EmailBodyExtractor
+from config.labels import HAM_TAG, SPAM_TAG
+from text.tokenizer import EmailTokenizer
+from dataio.trainingcorpus import TrainingCorpus
 from utils import write_classification_to_file
 
 
@@ -25,7 +25,7 @@ class MyFilter(BaseFilter):
     :ivar model: The trained machine learning model that includes probabilities,
         vocabulary, and other attributes.
     """
-    MODEL_PATH = "./model/nb_spam_data1_data2_vocab2500.pkl"
+    MODEL_PATH = "./models/nb_spam_data1_data2_vocab2500.pkl"
 
     def __init__(self, max_tokens=2500, pretrained_model=None):
         super().__init__()

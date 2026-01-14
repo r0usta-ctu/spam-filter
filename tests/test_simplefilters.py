@@ -5,7 +5,7 @@
 import unittest
 import tests.tst_filterbase
 
-from simplefilters import (
+from filters.simplefilters import (
     NaiveFilter,
     ParanoidFilter,
     RandomFilter)

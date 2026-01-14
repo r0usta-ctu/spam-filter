@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 
-from corpus import Corpus
-from paths import jpath, PREDICTION_FILENAME
+from dataio.corpus import Corpus
+from config.paths import jpath, PREDICTION_FILENAME
 
 
 class BaseFilter(ABC):
@@ -18,6 +18,7 @@ class BaseFilter(ABC):
         testing phase.
     :ivar _predictions: A dictionary to store prediction results.
     """
+
     def __init__(self):
         self._corpus = None
         self._prediction_file_path = None

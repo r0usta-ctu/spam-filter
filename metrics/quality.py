@@ -1,10 +1,7 @@
+from config.labels import SPAM_TAG, HAM_TAG
 from utils import read_classification_from_file
-from confmat import BinaryConfusionMatrix
-from paths import jpath, TRUTH_FILENAME, PREDICTION_FILENAME
-
-# ? Standard labels
-SPAM_TAG = 'SPAM'
-HAM_TAG = 'OK'
+from metrics.confmat import BinaryConfusionMatrix
+from config.paths import jpath, TRUTH_FILENAME, PREDICTION_FILENAME
 
 
 def quality_score(tp, tn, fp, fn):
