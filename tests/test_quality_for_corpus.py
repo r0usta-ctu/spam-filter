@@ -20,13 +20,13 @@ HAM_TAG = 'OK'
 class ComputeQualityForCorpusTest(unittest.TestCase):
 
     def setUp(self):
-        # Create a corpus directory
+        # Create a dataio directory
         os.makedirs(CORPUS_DIR, exist_ok=True)
-        from quality import compute_quality_for_corpus
+        from metrics.quality import compute_quality_for_corpus
         self.compute_quality_for_corpus = compute_quality_for_corpus
 
     def tearDown(self):
-        # Delete the corpus directory
+        # Delete the dataio directory
         shutil.rmtree(CORPUS_DIR, ignore_errors=True)
     
     def test_allPredictionsCorrect(self):
@@ -56,7 +56,7 @@ class ComputeQualityForCorpusTest(unittest.TestCase):
         # Create an artificial email classification dictionary  
         truth_dict = create_classification(n_items=30, n_spams=10)
         create_truth_and_prediction_file(truth_dict, spams_only)
-        # Since there are 10 spams and 20 hams in the corpus,
+        # Since there are 10 spams and 20 hams in the dataio,
         # and predictions are all spam, then the confusion matrix 
         # shall have TP = 10 and FP = 20, zero negatives.
         # The modified accuracy then is:
@@ -72,7 +72,7 @@ class ComputeQualityForCorpusTest(unittest.TestCase):
         # Create an artificial email classification dictionary  
         truth_dict = create_classification(n_items=30, n_spams=10)
         create_truth_and_prediction_file(truth_dict, hams_only)
-        # Since there are 10 spams and 20 hams in the corpus,
+        # Since there are 10 spams and 20 hams in the dataio,
         # and predictions are all ham, then the confusion matrix 
         # shall have TN = 20 and FN = 10, zero positives.
         # The modified accuracy then is:
@@ -88,7 +88,7 @@ class ComputeQualityForCorpusTest(unittest.TestCase):
         # Create an artificial email classification dictionary  
         truth_dict = create_classification(n_items=30, n_spams=10)
         create_truth_and_prediction_file(truth_dict, n_FP_n_FN)
-        # Since there are 10 spams and 20 hams in the corpus,
+        # Since there are 10 spams and 20 hams in the dataio,
         # and predictions are all correct except 1 FP and 2 FN, 
         # then the confusion matrix shall have
         # FP = 1, FN = 2, 
@@ -104,9 +104,9 @@ class ComputeQualityForCorpusTest(unittest.TestCase):
         
 def create_truth_and_prediction_file(truth_dict, pred_setter):
     """
-    Create !truth.txt and !prediction.txt files in the corpus directory.
+    Create !truth.txt and !prediction.txt files in the dataio directory.
 
-    Here we assume that the corpus directory already exists.
+    Here we assume that the dataio directory already exists.
     The pred_setter function must accept the classification dictionary,
     and must return a dictionary with the same keys and possibly changed values.
     """

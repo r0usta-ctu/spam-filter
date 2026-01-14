@@ -1,6 +1,6 @@
 import os
 
-from paths import jpath, PREDICTION_FILENAME
+from config.paths import jpath, PREDICTION_FILENAME
 from quality import compute_quality_for_corpus
 
 

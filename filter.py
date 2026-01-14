@@ -2,11 +2,11 @@ import math
 import pickle
 from collections import Counter
 
-from basefilter import BaseFilter
-from emailextractor import EmailBodyExtractor
-from labels import HAM_TAG, SPAM_TAG
-from tokenizer import EmailTokenizer
-from trainingcorpus import TrainingCorpus
+from filters.basefilter import BaseFilter
+from text.extractor import EmailBodyExtractor
+from config.labels import HAM_TAG, SPAM_TAG
+from text.tokenizer import EmailTokenizer
+from dataio.trainingcorpus import TrainingCorpus
 from utils import write_classification_to_file
 
 

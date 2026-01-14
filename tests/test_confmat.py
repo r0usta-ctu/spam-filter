@@ -4,7 +4,7 @@
 
 import unittest
 
-from confmat import BinaryConfusionMatrix
+from metrics.confmat import BinaryConfusionMatrix
 
 # The following 3 lines of code intentionally define 2 versions
 # of SPAM_TAG and HAM_TAG. Versions beginning with INI_... are used

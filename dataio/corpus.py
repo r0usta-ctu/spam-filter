@@ -1,6 +1,6 @@
 import os
 
-from paths import jpath
+from config.paths import jpath
 
 
 class Corpus:

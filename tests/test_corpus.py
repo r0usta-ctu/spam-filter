@@ -12,7 +12,7 @@ from tests.test_readClassificationFromFile import (
     random_string,
     replaced_open)
 
-from corpus import Corpus
+from dataio.corpus import Corpus
 
 SPECIAL_FILENAME = '!special.txt'
 CORPUS_DIR = 'testing_corpus_delete_me'
@@ -35,7 +35,7 @@ class TestCorpus(unittest.TestCase):
         delete_corpus_directory()
         
     def test_corpusContainsOnlyEmails(self):
-        """Test reading the corpus with email messages only."""
+        """Test reading the dataio with email messages only."""
         corpus = Corpus(CORPUS_DIR)
         # Exercise the SUT
         observed = {}
@@ -44,13 +44,13 @@ class TestCorpus(unittest.TestCase):
                 observed[fname] = contents
         # Verify the results
         self.assertEqual(len(self.expected), len(observed),
-                         'The emails() method did not generate all the corpus files.')
+                         'The emails() method did not generate all the dataio files.')
         self.assertEqual(self.expected, observed,
                          'The read file contents are not equal to the expected contents.')
         
     def test_corpusContainsAlsoSpecialFiles(self):
-        """Test reading the corpus with special files."""
-        # Add a special file into the corpus dir
+        """Test reading the dataio with special files."""
+        # Add a special file into the dataio dir
         save_file_to_corpus_dir(
             fname=SPECIAL_FILENAME, contents='fake', dirname=CORPUS_DIR)     
         corpus = Corpus(CORPUS_DIR)
@@ -61,7 +61,7 @@ class TestCorpus(unittest.TestCase):
                 observed[fname] = contents
         # Verify the results
         self.assertEqual(len(self.expected), len(observed),
-                         'The emails() method did not generate all the corpus files.')
+                         'The emails() method did not generate all the dataio files.')
         self.assertEqual(self.expected, observed,
                          'The read file contents are not equal to the expected contents.')
 
@@ -130,7 +130,7 @@ def save_file_to_corpus_dir(fname, contents, dirname=CORPUS_DIR):
         
 
 def delete_corpus_directory(dirname=CORPUS_DIR):
-    """Delete the directory with testing corpus."""
+    """Delete the directory with testing dataio."""
     shutil.rmtree(dirname, ignore_errors=True)
 
 
