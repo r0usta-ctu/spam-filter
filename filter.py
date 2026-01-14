@@ -4,7 +4,7 @@ from collections import Counter
 
 from basefilter import BaseFilter
 from emailextractor import EmailBodyExtractor
-from quality import HAM_TAG, SPAM_TAG
+from labels import HAM_TAG, SPAM_TAG
 from tokenizer import EmailTokenizer
 from trainingcorpus import TrainingCorpus
 from utils import write_classification_to_file
