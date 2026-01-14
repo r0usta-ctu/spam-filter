@@ -25,7 +25,7 @@ class MyFilter(BaseFilter):
     :ivar model: The trained machine learning model that includes probabilities,
         vocabulary, and other attributes.
     """
-    MODEL_PATH = "./model/nb_spam_data1_data2_vocab2500.pkl"
+    MODEL_PATH = "./models/nb_spam_data1_data2_vocab2500.pkl"
 
     def __init__(self, max_tokens=2500, pretrained_model=None):
         super().__init__()
