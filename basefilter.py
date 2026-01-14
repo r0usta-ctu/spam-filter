@@ -6,9 +6,18 @@ from paths import jpath, PREDICTION_FILENAME
 
 class BaseFilter(ABC):
     """
-    Abstract base class for all filters.
-    """
+    Abstract base class for creating filters.
 
+    The `BaseFilter` class serves as a foundation for implementing different types
+    of filters. Subclasses must provide concrete implementations for the abstract
+    methods `train` and `test`. The class manages a corpus and provides basic
+    infrastructure to support training and testing operations.
+
+    :ivar _corpus: A corpus object to handle email data.
+    :ivar _prediction_file_path: Path to the prediction file generated during the
+        testing phase.
+    :ivar _predictions: A dictionary to store prediction results.
+    """
     def __init__(self):
         self._corpus = None
         self._prediction_file_path = None
